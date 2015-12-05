@@ -8,6 +8,8 @@ package STSS;
  *
  * @author andy
  */
-public class GameStatusType {
-    
+public enum GameStatusType {
+    MainMenu,
+    Playing,
+    Paused,
 }
