@@ -4,6 +4,7 @@
  */
 package STSS;
 
+import STSS.Ships.Ship;
 import STSS.Interfaces.IGameContext;
 import com.jme3.asset.AssetManager;
 import com.jme3.scene.Node;

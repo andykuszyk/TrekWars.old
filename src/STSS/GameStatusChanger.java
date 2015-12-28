@@ -4,6 +4,8 @@
  */
 package STSS;
 
+import STSS.Ships.ShipType;
+import STSS.Ships.Ship;
 import static STSS.GameStatusType.MainMenu;
 import static STSS.GameStatusType.Paused;
 import static STSS.GameStatusType.Playing;
@@ -90,6 +92,8 @@ public class GameStatusChanger {
         starTexture.setWrap(Texture.WrapMode.Repeat);
         mat.setTexture("ColorMap", starTexture);
         starSphere.setMaterial(mat);
+        
+        _gameContext.setPlayer(new Ship(ShipType.Voyager));
         
         _voyager = assetManager.loadModel("Models/Voyager Prototype.obj");
         Material mat_default = new Material(assetManager, "Common/MatDefs/Misc/ShowNormals.j3md");
