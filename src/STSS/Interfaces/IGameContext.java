@@ -5,6 +5,7 @@
 package STSS.Interfaces;
 
 import STSS.GameStatusType;
+import STSS.Ships.ShipBase;
 
 /**
  *
@@ -12,4 +13,5 @@ import STSS.GameStatusType;
  */
 public interface IGameContext {
     GameStatusType getStatus();
+    ShipBase getPlayer();
 }

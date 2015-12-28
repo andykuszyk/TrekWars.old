@@ -38,11 +38,8 @@ public class GameUpdater {
     }
     
     private void processPlayingUpdate(float tpf) {
-        //TODO: add update code
-        _voyager.rotate(tpf /10, tpf/10, tpf/10);
-        Vector3f voyagerTranslation = _voyager.getWorldTranslation();
         
-        Quaternion cameraRotation = new Quaternion(_voyager.getLocalRotation());
+        _gameContext.getPlayer().update(tpf);
         
         float separation = -10;
         float newCamX = (float)(voyagerTranslation.x + separation * Math.sin(cameraRotation.getY()));

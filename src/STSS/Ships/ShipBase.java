@@ -13,6 +13,29 @@ import java.util.List;
  */
 public abstract class ShipBase {
     
-    private List<Spatial> _spatials;
+    protected List<Spatial> _spatials;
     
+    public ShipBase() {
+        _spatials = new List<Spatial>();
+    }
+    
+    public void update(float tpf) {
+        
+    }
+    
+    public void increaseSpeed(float tpf) {
+        
+    }
+            
+    public void decreaseSpeed(float tpf) {
+        
+    }
+    
+    public void turnLeft(float tpf) {
+        
+    }
+    
+    public void turnRight(float tpf) {
+        
+    }
 }
