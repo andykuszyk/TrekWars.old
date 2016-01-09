@@ -4,6 +4,8 @@
  */
 package TrekWars.Environments;
 
+import TrekWars.Bases.EnvironmentBase;
+
 /**
  *
  * @author Andy.Kuszyk

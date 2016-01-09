@@ -4,12 +4,14 @@
  */
 package TrekWars.Environments;
 
+import TrekWars.Bases.EnvironmentBase;
+
 /**
  *
  * @author Andy.Kuszyk
  */
 public class EnvironmentFactory {
-    public EnvironmentBase createEnvironment(EnvironmentType environmentType) {
+    public static EnvironmentBase createEnvironment(EnvironmentType environmentType) {
         switch(environmentType){
             case SimpleStarField:
                 return new SimpleStarField();

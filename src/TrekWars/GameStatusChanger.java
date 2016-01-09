@@ -4,8 +4,8 @@
  */
 package TrekWars;
 
+import TrekWars.Environments.EnvironmentFactory;
 import TrekWars.Ships.ShipType;
-import TrekWars.Ships.ShipBase;
 import static TrekWars.GameStatusType.MainMenu;
 import static TrekWars.GameStatusType.Paused;
 import static TrekWars.GameStatusType.Playing;
@@ -85,7 +85,8 @@ public class GameStatusChanger {
     
     private void loadPlaying(){
         
-       _gameContext.setPlayer(ShipFactory.createShip(_gameContext.getPlayerType));
+       _gameContext.setPlayer(ShipFactory.createShip(_gameContext.getPlayerType()));
+       _gameContext.setEnvironment(EnvironmentFactory.createEnvironment(_gameContext.getEnvironmentType()));
         
         Sphere sphere = new Sphere(100, 100, 100);
         sphere.scaleTextureCoordinates(new Vector2f(10,10));

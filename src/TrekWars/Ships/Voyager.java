@@ -4,6 +4,8 @@
  */
 package TrekWars.Ships;
 
+import TrekWars.Bases.ShipBase;
+
 /**
  *
  * @author andy
