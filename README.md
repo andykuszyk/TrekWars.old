@@ -13,3 +13,8 @@ The concept of the game is simple:
 
 ## Getting started
 To get started, just install the jMonkeyEngine and then clone this repo. From there, it should be a case of building the project and running the app.
+
+## Notes on units
+* Throughout the code, the "tpf" value from jMonkeyEngine is used. This is the time per frame in float seconds;
+* Where units are referred to, they always in metres;
+    * E.g. acceleration = 1 means 1 metre per second.
