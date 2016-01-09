@@ -5,11 +5,12 @@
 package TrekWars;
 
 import TrekWars.Ships.ShipType;
-import STSS.Ships.Ship;
+import TrekWars.Ships.ShipBase;
 import static TrekWars.GameStatusType.MainMenu;
 import static TrekWars.GameStatusType.Paused;
 import static TrekWars.GameStatusType.Playing;
 import TrekWars.Interfaces.IGameContext;
+import TrekWars.Ships.ShipFactory;
 import com.jme3.material.Material;
 import com.jme3.math.Vector2f;
 import com.jme3.scene.Geometry;
@@ -83,6 +84,9 @@ public class GameStatusChanger {
     }
     
     private void loadPlaying(){
+        
+       _gameContext.setPlayer(ShipFactory.createShip(_gameContext.getPlayerType));
+        
         Sphere sphere = new Sphere(100, 100, 100);
         sphere.scaleTextureCoordinates(new Vector2f(10,10));
         Geometry starSphere = new Geometry("StarSphere", sphere);

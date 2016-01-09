@@ -13,7 +13,6 @@ import com.jme3.math.Vector3f;
  * @author andy
  */
 public class GameUpdater {
-    
     private IGameContext _gameContext;
     
     public GameUpdater(IGameContext gameContext){
@@ -38,18 +37,7 @@ public class GameUpdater {
     }
     
     private void processPlayingUpdate(float tpf) {
-        
         _gameContext.getPlayer().update(tpf);
-        
-        float separation = -10;
-        float newCamX = (float)(voyagerTranslation.x + separation * Math.sin(cameraRotation.getY()));
-        float newCamY = (float)(voyagerTranslation.y + separation * Math.tan(cameraRotation.getX()));
-        float newCamZ = (float)(voyagerTranslation.x + separation * Math.cos(cameraRotation.getY()));
-        
-        Vector3f cameraLocation = new Vector3f(newCamX, newCamY, newCamZ);
-
-        cam.setLocation(cameraLocation);
-        cam.setRotation(cameraRotation);
     }
     
     private void processPausedUpdate(float tpf) {

@@ -9,5 +9,8 @@ package TrekWars.Ships;
  * @author andy
  */
 public class Voyager extends ShipBase {
-    
+    @Override
+    public void update(float tpf) {
+        
+    }
 }

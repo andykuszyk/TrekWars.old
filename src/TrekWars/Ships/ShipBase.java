@@ -5,6 +5,7 @@
 package TrekWars.Ships;
 
 import com.jme3.scene.Spatial;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,9 +15,15 @@ import java.util.List;
 public abstract class ShipBase {
     
     protected List<Spatial> _spatials;
+    private ShipType _shipType;
     
-    public ShipBase() {
-        _spatials = new List<Spatial>();
+    public ShipBase(ShipType shipType) {
+        _spatials = new ArrayList<Spatial>();
+        _shipType = shipType;
+    }
+    
+    public ShipType getShipType(){
+        return _shipType;
     }
     
     public void update(float tpf) {
