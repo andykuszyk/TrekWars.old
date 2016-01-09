@@ -37,6 +37,7 @@ public class EnvironmentBase extends TrekWarsSpatialBase {
         ArrayList<Spatial> spatials = new ArrayList<Spatial>();
         
         spatials.addAll(_starField.getSpatials());
+        spatials.addAll(super.getSpatials());
         
         return spatials;
     }

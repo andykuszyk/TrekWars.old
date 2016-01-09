@@ -28,6 +28,7 @@ public class Voyager extends ShipBase {
     
     @Override
     public void update(float tpf) {
-        
+        Spatial voyager = _spatials.get(0);
+        voyager.rotate(tpf*1,tpf*1,tpf*1);
     }
 }
