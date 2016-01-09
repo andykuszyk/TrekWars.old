@@ -2,14 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package STSS;
+package TrekWars;
 
-import STSS.Ships.ShipType;
+import TrekWars.Ships.ShipType;
 import STSS.Ships.Ship;
-import static STSS.GameStatusType.MainMenu;
-import static STSS.GameStatusType.Paused;
-import static STSS.GameStatusType.Playing;
-import STSS.Interfaces.IGameContext;
+import static TrekWars.GameStatusType.MainMenu;
+import static TrekWars.GameStatusType.Paused;
+import static TrekWars.GameStatusType.Playing;
+import TrekWars.Interfaces.IGameContext;
 import com.jme3.material.Material;
 import com.jme3.math.Vector2f;
 import com.jme3.scene.Geometry;

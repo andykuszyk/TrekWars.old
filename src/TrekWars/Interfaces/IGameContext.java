@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package STSS.Interfaces;
+package TrekWars.Interfaces;
 
-import STSS.GameStatusType;
-import STSS.Ships.ShipBase;
+import TrekWars.GameStatusType;
+import TrekWars.Ships.ShipBase;
 
 /**
  *
