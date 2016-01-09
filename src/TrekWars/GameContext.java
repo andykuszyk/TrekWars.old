@@ -1,12 +1,13 @@
 package TrekWars;
 
-import TrekWars.Environments.EnvironmentBase;
+import TrekWars.Bases.EnvironmentBase;
 import TrekWars.Environments.EnvironmentType;
-import TrekWars.Ships.ShipBase;
+import TrekWars.Bases.ShipBase;
 import TrekWars.Interfaces.IGameContext;
 import TrekWars.Ships.ShipType;
 import com.jme3.asset.AssetManager;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -90,6 +91,7 @@ public class GameContext implements IGameContext {
     @Override
     public void setPlayer(ShipBase player) {
         _player = player;
+        _playerType = player.getShipType();
     }
     
     @Override
@@ -99,7 +101,22 @@ public class GameContext implements IGameContext {
     
     @Override
     public void setEnvironment(EnvironmentBase environment) {
+        // First, we need to remove any of the existing environment
+        // spatials from the node graph.
+        for(Spatial spatial : _environment.getSpatials()) {
+            Node spatialParent = spatial.getParent();
+            if(spatialParent == null) continue;
+            spatialParent.detachChild(spatial);
+        }
+        
         _environment = environment;
+        
+        // Now attache the new environment's spatials to the
+        // root node.
+        for(Spatial spatial : environment.getSpatials()) {
+            _rootNode.attachChild(spatial);
+        }
+        _environmentType = environment.getEnvironmentType();
     }
     
     @Override

@@ -4,10 +4,10 @@
  */
 package TrekWars.Interfaces;
 
-import TrekWars.Environments.EnvironmentBase;
+import TrekWars.Bases.EnvironmentBase;
 import TrekWars.Environments.EnvironmentType;
 import TrekWars.GameStatusType;
-import TrekWars.Ships.ShipBase;
+import TrekWars.Bases.ShipBase;
 import TrekWars.Ships.ShipType;
 import com.jme3.asset.AssetManager;
 import com.jme3.scene.Node;
