@@ -20,7 +20,7 @@ public class EnvironmentBase extends TrekWarsSpatialBase {
     
     public EnvironmentBase(EnvironmentType environmentType, IGameContext gameContext) {
         super(gameContext);
-        _starField = new StarFieldBase();
+        _starField = new StarFieldBase(gameContext);
         _environmentType = environmentType;
     }
     

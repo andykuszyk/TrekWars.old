@@ -5,16 +5,17 @@
 package TrekWars.Environments;
 
 import TrekWars.Bases.EnvironmentBase;
+import TrekWars.Interfaces.IGameContext;
 
 /**
  *
  * @author Andy.Kuszyk
  */
 public class EnvironmentFactory {
-    public static EnvironmentBase createEnvironment(EnvironmentType environmentType) {
+    public static EnvironmentBase createEnvironment(EnvironmentType environmentType, IGameContext gameContext) {
         switch(environmentType){
             case SimpleStarField:
-                return new SimpleStarField();
+                return new SimpleStarField(gameContext);
             default:
                 return null;
         }
