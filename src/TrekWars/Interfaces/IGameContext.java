@@ -10,6 +10,7 @@ import TrekWars.GameStatusType;
 import TrekWars.Bases.ShipBase;
 import TrekWars.Ships.ShipType;
 import com.jme3.asset.AssetManager;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import java.util.Collection;
 import java.util.List;
@@ -38,6 +39,8 @@ public interface IGameContext {
     Node getRootNode();
 
     GameStatusType getStatus();
+    
+    Camera getCamera();
 
     void processUpdate(float tpf);
 

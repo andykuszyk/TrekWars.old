@@ -17,7 +17,8 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        _gameContext = new GameContext(assetManager,rootNode);
+        flyCam.setEnabled(false);
+        _gameContext = new GameContext(assetManager,rootNode, cam);
         _gameContext.setEnvironmentType(EnvironmentType.SimpleStarField);
         _gameContext.setPlayerType(ShipType.Voyager);
         _gameContext.setStatus(GameStatusType.Playing);

@@ -7,6 +7,7 @@ import TrekWars.Bases.TrekWarsSpatialBase;
 import TrekWars.Interfaces.IGameContext;
 import TrekWars.Ships.ShipType;
 import com.jme3.asset.AssetManager;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import java.util.ArrayList;
@@ -25,8 +26,9 @@ public class GameContext implements IGameContext {
     private EnvironmentBase _environment;
     private ShipType _playerType;    
     private EnvironmentType _environmentType;
+    private Camera _camera;
     
-    public GameContext(AssetManager assetManager,Node rootNode) {
+    public GameContext(AssetManager assetManager,Node rootNode, Camera camera) {
         _rootNode = rootNode;
         _assetManager = assetManager;
         _status = null;
@@ -34,11 +36,17 @@ public class GameContext implements IGameContext {
         _gameUpdater = new GameUpdater(this);
         _enemies = new ArrayList<ShipBase>();
         _friends = new ArrayList<ShipBase>();
+        _camera = camera;
     }
     
     @Override
     public void processUpdate(float tpf) {
         _gameUpdater.processUpdate(tpf);
+    }
+    
+    @Override
+    public Camera getCamera() {
+        return _camera;
     }
     
     @Override
