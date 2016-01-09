@@ -2,23 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package TrekWars.Ships;
+package TrekWars.Bases;
 
-import com.jme3.scene.Spatial;
-import java.util.ArrayList;
-import java.util.List;
+import TrekWars.Ships.ShipType;
 
 /**
  *
  * @author andy
  */
-public abstract class ShipBase {
+public abstract class ShipBase extends TrekWarsSpatialBase {
     
-    protected List<Spatial> _spatials;
+    
     private ShipType _shipType;
     
     public ShipBase(ShipType shipType) {
-        _spatials = new ArrayList<Spatial>();
         _shipType = shipType;
     }
     

@@ -2,7 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package TrekWars.Environments;
+package TrekWars.Bases;
+
+import TrekWars.Environments.EnvironmentType;
+import com.jme3.scene.Spatial;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -25,4 +30,11 @@ public class EnvironmentBase {
         return _starField;
     }
     
+    public List<Spatial> getSpatials() {
+        ArrayList<Spatial> spatials = new ArrayList<Spatial>();
+        
+        spatials.addAll(_starField.getSpatials());
+        
+        return spatials;
+    }
 }
