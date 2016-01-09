@@ -42,15 +42,28 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     }
     
     public void turnLeft(float tpf) {
-        setYRotation((float) (_yRotation - (tpf * _acceleration / Math.PI)));
+        setYRotation(appendRotation(_yRotation, - (tpf * _acceleration / Math.PI)));
     }
     
     public void turnRight(float tpf) {
-        setYRotation((float) (_yRotation + (tpf * _acceleration / Math.PI)));
+        setYRotation(appendRotation(_yRotation,(tpf * _acceleration / Math.PI)));
     }
     
     public float getYRotation() {
         return _yRotation;
+    }
+    
+    private float appendRotation(float rotation, double delta) {
+        double newRotation = rotation + delta;
+        if(newRotation >= 0 && newRotation < (Math.PI * 2)) {
+            return (float) newRotation;
+        }
+        else if(newRotation < 0) {
+            return (float) (newRotation + (2 * Math.PI));
+        }
+        else {
+            return (float) (newRotation - (2 * Math.PI));
+        }
     }
     
     protected void setYRotation(float yRotation) {

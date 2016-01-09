@@ -29,16 +29,25 @@ public class Voyager extends ShipBase {
     
     @Override
     public void update(float tpf) {
-        Quaternion rot = _spatials.get(0).getLocalRotation();
+        /*Quaternion rot = _spatials.get(0).getLocalRotation();
+        
         _spatials.get(0).setLocalRotation(new Quaternion(
                 (float)(rot.getX() + 0.001), (float)(rot.getY() + 0.001), (float)(rot.getZ() + 0.001), rot.getW()));
-        
-        //turnLeft(tpf);
+        System.out.println(rot);*/
+        turnLeft(tpf);
     }
     
     @Override
     protected void onYRotationChanged(float oldValue, float newValue) {
-        _spatials.get(0).rotate(new Quaternion(0,getYRotation(),0,0));
+        Spatial voyager = _spatials.get(0);
+        Quaternion currentRotation = voyager.getLocalRotation();
+        voyager.setLocalRotation(new Quaternion(
+                0,//currentRotation.getX(),
+                0,//currentRotation.getZ(),
+                getYRotation(),
+                
+                0//currentRotation.getW()
+                ));
         System.out.println(getYRotation());
     }
 }
