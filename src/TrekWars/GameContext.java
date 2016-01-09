@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package STSS;
+package TrekWars;
 
 import STSS.Ships.Ship;
-import STSS.Interfaces.IGameContext;
+import TrekWars.Interfaces.IGameContext;
 import com.jme3.asset.AssetManager;
 import com.jme3.scene.Node;
 import java.util.List;
