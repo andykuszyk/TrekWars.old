@@ -1,5 +1,7 @@
 package TrekWars;
 
+import TrekWars.Environments.EnvironmentType;
+import TrekWars.Ships.ShipType;
 import com.jme3.app.SimpleApplication;
 import com.jme3.renderer.RenderManager;
 
@@ -16,6 +18,8 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         _gameContext = new GameContext(assetManager,rootNode);
+        _gameContext.setEnvironmentType(EnvironmentType.SimpleStarField);
+        _gameContext.setPlayerType(ShipType.Voyager);
         _gameContext.setStatus(GameStatusType.Playing);
     }
     

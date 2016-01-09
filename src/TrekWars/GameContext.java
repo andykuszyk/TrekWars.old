@@ -3,6 +3,7 @@ package TrekWars;
 import TrekWars.Bases.EnvironmentBase;
 import TrekWars.Environments.EnvironmentType;
 import TrekWars.Bases.ShipBase;
+import TrekWars.Bases.TrekWarsSpatialBase;
 import TrekWars.Interfaces.IGameContext;
 import TrekWars.Ships.ShipType;
 import com.jme3.asset.AssetManager;
@@ -90,9 +91,9 @@ public class GameContext implements IGameContext {
     
     @Override
     public void setPlayer(ShipBase player) {
-        detachSpatials(_player.getSpatials());
+        detachSpatials(_player);
         _player = player;
-        attachSpatials(player.getSpatials());
+        attachSpatials(player);
         _playerType = player.getShipType();
     }
     
@@ -105,13 +106,13 @@ public class GameContext implements IGameContext {
     public void setEnvironment(EnvironmentBase environment) {
         // First, we need to remove any of the existing environment
         // spatials from the node graph.
-        detachSpatials(_environment.getSpatials());
+        detachSpatials(_environment);
         
         _environment = environment;
         
         // Now attache the new environment's spatials to the
         // root node.
-        attachSpatials(environment.getSpatials());
+        attachSpatials(environment);
         _environmentType = environment.getEnvironmentType();
     }
     
@@ -135,16 +136,20 @@ public class GameContext implements IGameContext {
         _playerType = shipType;
     }
     
-    private void detachSpatials(Iterable<Spatial> spatials) {
-        for(Spatial spatial : spatials) {
+    private void detachSpatials(TrekWarsSpatialBase trekWarsObject) {
+        if(trekWarsObject == null) return;
+        
+        for(Spatial spatial : trekWarsObject.getSpatials()) {
             Node spatialParent = spatial.getParent();
             if(spatialParent == null) continue;
             spatialParent.detachChild(spatial);
         }
     }
     
-    private void attachSpatials(Iterable<Spatial> spatials) {
-        for(Spatial spatial : spatials) {
+    private void attachSpatials(TrekWarsSpatialBase trekWarsObject) {
+        if(trekWarsObject == null) return;
+        
+        for(Spatial spatial : trekWarsObject.getSpatials()) {
             _rootNode.attachChild(spatial);
         }
     }

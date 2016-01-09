@@ -32,6 +32,7 @@ public class EnvironmentBase extends TrekWarsSpatialBase {
         return _starField;
     }
     
+    @Override
     public List<Spatial> getSpatials() {
         ArrayList<Spatial> spatials = new ArrayList<Spatial>();
         
