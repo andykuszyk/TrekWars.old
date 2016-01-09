@@ -5,6 +5,7 @@
 package TrekWars.Bases;
 
 import TrekWars.Environments.EnvironmentType;
+import TrekWars.Interfaces.IGameContext;
 import com.jme3.scene.Spatial;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +14,12 @@ import java.util.List;
  *
  * @author Andy.Kuszyk
  */
-public class EnvironmentBase {
+public class EnvironmentBase extends TrekWarsSpatialBase {
     private StarFieldBase _starField;
     private EnvironmentType _environmentType;
     
-    public EnvironmentBase(EnvironmentType environmentType) {
+    public EnvironmentBase(EnvironmentType environmentType, IGameContext gameContext) {
+        super(gameContext);
         _starField = new StarFieldBase();
         _environmentType = environmentType;
     }

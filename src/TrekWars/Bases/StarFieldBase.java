@@ -4,10 +4,16 @@
  */
 package TrekWars.Bases;
 
+import TrekWars.Interfaces.IGameContext;
+
 /**
  *
  * @author Andy.Kuszyk
  */
 public class StarFieldBase extends TrekWarsSpatialBase  {
+    
+    public StarFieldBase(IGameContext gameContext) {
+        super(gameContext);
+    }
     
 }

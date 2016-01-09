@@ -4,6 +4,7 @@
  */
 package TrekWars.Bases;
 
+import TrekWars.Interfaces.IGameContext;
 import TrekWars.Ships.ShipType;
 
 /**
@@ -15,7 +16,8 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     
     private ShipType _shipType;
     
-    public ShipBase(ShipType shipType) {
+    public ShipBase(ShipType shipType, IGameContext gameContext) {
+        super(gameContext);
         _shipType = shipType;
     }
     

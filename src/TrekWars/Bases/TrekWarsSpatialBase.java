@@ -4,6 +4,7 @@
  */
 package TrekWars.Bases;
 
+import TrekWars.Interfaces.IGameContext;
 import com.jme3.scene.Spatial;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.List;
  */
 public class TrekWarsSpatialBase {
     protected List<Spatial> _spatials;
+    protected IGameContext _gameContext;
     
-    public TrekWarsSpatialBase() {
+    public TrekWarsSpatialBase(IGameContext gameContext) {
         _spatials = new ArrayList<Spatial>();
+        _gameContext = gameContext;
     }
     
     public List<Spatial> getSpatials() {
