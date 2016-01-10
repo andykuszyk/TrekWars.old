@@ -13,7 +13,6 @@ import com.jme3.math.Vector3f;
  * @author andy
  */
 public class GameUpdater {
-    
     private IGameContext _gameContext;
     
     public GameUpdater(IGameContext gameContext){
@@ -38,18 +37,22 @@ public class GameUpdater {
     }
     
     private void processPlayingUpdate(float tpf) {
-        
         _gameContext.getPlayer().update(tpf);
         
-        float separation = -10;
-        float newCamX = (float)(voyagerTranslation.x + separation * Math.sin(cameraRotation.getY()));
-        float newCamY = (float)(voyagerTranslation.y + separation * Math.tan(cameraRotation.getX()));
-        float newCamZ = (float)(voyagerTranslation.x + separation * Math.cos(cameraRotation.getY()));
+        _gameContext.getCamera().setLocation(calculateCameraVector());
+        _gameContext.getCamera().lookAt(_gameContext.getPlayer().getLocation(), Vector3f.UNIT_Y);
+    }
+    
+    private Vector3f calculateCameraVector() {
+        float playerYRotation = _gameContext.getPlayer().getYRotation();
+        Vector3f playerLocation = _gameContext.getPlayer().getLocation();
+        float distance = -_gameContext.getCameraHorizontalDistance();
         
-        Vector3f cameraLocation = new Vector3f(newCamX, newCamY, newCamZ);
-
-        cam.setLocation(cameraLocation);
-        cam.setRotation(cameraRotation);
+        double cameraZ = playerLocation.getZ() + (distance * Math.cos(playerYRotation));
+        double cameraX = playerLocation.getX() + (distance * Math.sin(playerYRotation));
+        double cameraY = _gameContext.getCameraVerticalDistance();
+        
+        return new Vector3f((float)cameraX, (float)cameraY, (float)cameraZ);
     }
     
     private void processPausedUpdate(float tpf) {

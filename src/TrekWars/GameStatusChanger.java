@@ -4,12 +4,13 @@
  */
 package TrekWars;
 
+import TrekWars.Environments.EnvironmentFactory;
 import TrekWars.Ships.ShipType;
-import STSS.Ships.Ship;
 import static TrekWars.GameStatusType.MainMenu;
 import static TrekWars.GameStatusType.Paused;
 import static TrekWars.GameStatusType.Playing;
 import TrekWars.Interfaces.IGameContext;
+import TrekWars.Ships.ShipFactory;
 import com.jme3.material.Material;
 import com.jme3.math.Vector2f;
 import com.jme3.scene.Geometry;
@@ -83,27 +84,11 @@ public class GameStatusChanger {
     }
     
     private void loadPlaying(){
-        Sphere sphere = new Sphere(100, 100, 100);
-        sphere.scaleTextureCoordinates(new Vector2f(10,10));
-        Geometry starSphere = new Geometry("StarSphere", sphere);
-        starSphere.scale(-1);
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        Texture starTexture = assetManager.loadTexture("Textures/starscape.jpg");
-        starTexture.setWrap(Texture.WrapMode.Repeat);
-        mat.setTexture("ColorMap", starTexture);
-        starSphere.setMaterial(mat);
         
-        _gameContext.setPlayer(new Ship(ShipType.Voyager));
-        
-        _voyager = assetManager.loadModel("Models/Voyager Prototype.obj");
-        Material mat_default = new Material(assetManager, "Common/MatDefs/Misc/ShowNormals.j3md");
-        _voyager.setMaterial(mat_default);
-        _voyager.setLocalTranslation(0, 0, -10);
-        _voyager.setLocalScale(1);
-        
-        rootNode.attachChild(starSphere);
-        rootNode.attachChild(_voyager);
-        
+       _gameContext.setPlayer(ShipFactory.createShip(
+               _gameContext.getPlayerType(), _gameContext));
+       _gameContext.setEnvironment(EnvironmentFactory.createEnvironment(
+               _gameContext.getEnvironmentType(), _gameContext));
     }
     
     private void unloadMainMenu(){
