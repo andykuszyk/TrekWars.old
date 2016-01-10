@@ -3,6 +3,8 @@ package TrekWars;
 import TrekWars.Environments.EnvironmentType;
 import TrekWars.Ships.ShipType;
 import com.jme3.app.SimpleApplication;
+import com.jme3.input.KeyInput;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.renderer.RenderManager;
 
 public class Main extends SimpleApplication {
@@ -22,6 +24,14 @@ public class Main extends SimpleApplication {
         _gameContext.setEnvironmentType(EnvironmentType.SimpleStarField);
         _gameContext.setPlayerType(ShipType.Voyager);
         _gameContext.setStatus(GameStatusType.Playing);
+        
+        inputManager.addMapping(InputMappings.left, new KeyTrigger(KeyInput.KEY_LEFT));
+        inputManager.addMapping(InputMappings.right, new KeyTrigger(KeyInput.KEY_RIGHT));
+        inputManager.addMapping(InputMappings.accelerate, new KeyTrigger(KeyInput.KEY_UP));
+        inputManager.addMapping(InputMappings.decelerate, new KeyTrigger(KeyInput.KEY_DOWN));
+        inputManager.addMapping(InputMappings.fire, new KeyTrigger(KeyInput.KEY_SPACE));
+        
+        
     }
     
     @Override

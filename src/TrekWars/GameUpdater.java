@@ -5,7 +5,6 @@
 package TrekWars;
 
 import TrekWars.Interfaces.IGameContext;
-import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 
 /**
@@ -41,6 +40,8 @@ public class GameUpdater {
         
         _gameContext.getCamera().setLocation(calculateCameraVector());
         _gameContext.getCamera().lookAt(_gameContext.getPlayer().getLocation(), Vector3f.UNIT_Y);
+        
+        
     }
     
     private Vector3f calculateCameraVector() {
