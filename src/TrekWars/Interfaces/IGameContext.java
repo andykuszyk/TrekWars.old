@@ -23,39 +23,26 @@ import java.util.List;
 public interface IGameContext {
 
     AssetManager getAssetManager();
-
     List<ShipBase> getEnemies();
-
     EnvironmentBase getEnvironment();
-
     EnvironmentType getEnvironmentType();
-
     List<ShipBase> getFriends();
-
     ShipBase getPlayer();
-
     ShipType getPlayerType();
-
     Node getRootNode();
-
     GameStatusType getStatus();
-    
     Camera getCamera();
-
-    void processUpdate(float tpf);
-
-    void setEnemies(Collection<ShipBase> enemies);
-
-    void setEnvironment(EnvironmentBase environment);
-
-    void setEnvironmentType(EnvironmentType environmentType);
-
-    void setFriends(Collection<ShipBase> friends);
-
-    void setPlayer(ShipBase player);
-
-    void setPlayerType(ShipType shipType);
-
-    void setStatus(GameStatusType newStatus);
+    float getCameraHorizontalDistance();
+    float getCameraVerticalDistance();
     
+    void processUpdate(float tpf);
+    void setEnemies(Collection<ShipBase> enemies);
+    void setEnvironment(EnvironmentBase environment);
+    void setEnvironmentType(EnvironmentType environmentType);
+    void setFriends(Collection<ShipBase> friends);
+    void setPlayer(ShipBase player);
+    void setPlayerType(ShipType shipType);
+    void setStatus(GameStatusType newStatus);
+    void setCameraHorizontalDistance(float distance);
+    void setCameraVerticalDistance(float distance);
 }

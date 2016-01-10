@@ -50,7 +50,10 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     }
     
     public float getYRotation() {
-        return _yRotation;
+        return getSpatials().get(0).getLocalRotation().getY();
+        
+        //TODO
+        //return _yRotation;
     }
     
     private float appendRotation(float rotation, double delta) {
@@ -77,7 +80,10 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     }
     
     public Vector3f getLocation() {
-        return _location;
+        return getSpatials().get(0).getLocalTranslation();
+        
+        // TODO
+        //return _location;
     }
     
     protected void setLocation(Vector3f location) {

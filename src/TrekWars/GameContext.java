@@ -27,6 +27,8 @@ public class GameContext implements IGameContext {
     private ShipType _playerType;    
     private EnvironmentType _environmentType;
     private Camera _camera;
+    private float _cameraHorizontalDistance = 10;
+    private float _cameraVerticalDistance = 3;
     
     public GameContext(AssetManager assetManager,Node rootNode, Camera camera) {
         _rootNode = rootNode;
@@ -142,6 +144,26 @@ public class GameContext implements IGameContext {
     @Override
     public void setPlayerType(ShipType shipType) {
         _playerType = shipType;
+    }
+    
+    @Override
+    public float getCameraHorizontalDistance() {
+        return _cameraHorizontalDistance;
+    }
+    
+    @Override
+    public void setCameraHorizontalDistance(float distance) {
+        _cameraHorizontalDistance = distance;
+    }
+    
+    @Override
+    public float getCameraVerticalDistance() {
+        return _cameraVerticalDistance;
+    }
+    
+    @Override
+    public void setCameraVerticalDistance(float distance) {
+        _cameraVerticalDistance = distance;
     }
     
     private void detachSpatials(TrekWarsSpatialBase trekWarsObject) {

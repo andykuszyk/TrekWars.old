@@ -44,7 +44,15 @@ public class GameUpdater {
     }
     
     private Vector3f calculateCameraVector() {
-        return _gameContext.getCamera().getLocation();
+        float playerYRotation = _gameContext.getPlayer().getYRotation();
+        Vector3f playerLocation = _gameContext.getPlayer().getLocation();
+        float distance = -_gameContext.getCameraHorizontalDistance();
+        
+        double cameraZ = playerLocation.getZ() + (distance * Math.cos(playerYRotation));
+        double cameraX = playerLocation.getX() + (distance * Math.sin(playerYRotation));
+        double cameraY = _gameContext.getCameraVerticalDistance();
+        
+        return new Vector3f((float)cameraX, (float)cameraY, (float)cameraZ);
     }
     
     private Quaternion calculateCameraQuaternion(){
