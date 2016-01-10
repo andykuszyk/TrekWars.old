@@ -29,12 +29,12 @@ public class Voyager extends ShipBase {
     
     @Override
     public void update(float tpf) {
-        /*Quaternion rot = _spatials.get(0).getLocalRotation();
+        Quaternion rot = _spatials.get(0).getLocalRotation();
         
         _spatials.get(0).setLocalRotation(new Quaternion(
                 (float)(rot.getX() + 0.001), (float)(rot.getY() + 0.001), (float)(rot.getZ() + 0.001), rot.getW()));
-        System.out.println(rot);*/
-        turnLeft(tpf);
+        System.out.println(rot);
+        //turnLeft(tpf);
     }
     
     @Override
