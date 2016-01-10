@@ -31,7 +31,7 @@ public class Voyager extends ShipBase {
     public void update(float tpf) {
         Spatial voyager = getSpatials().get(0);
         Vector3f initialLocation = voyager.getLocalTranslation();
-        
+        System.out.println(initialLocation.getZ());
         // Move player
         voyager.setLocalTranslation(
                 initialLocation.getX(), 
