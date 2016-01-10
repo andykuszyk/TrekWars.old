@@ -4,7 +4,6 @@
  */
 package TrekWars;
 
-import TrekWars.Bases.Axis;
 import TrekWars.Interfaces.IGameContext;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
@@ -41,7 +40,7 @@ public class GameUpdater {
         _gameContext.getPlayer().update(tpf);
         
         _gameContext.getCamera().setLocation(calculateCameraVector());
-        _gameContext.getCamera().setRotation(calculateCameraQuaternion());
+        _gameContext.getCamera().lookAt(_gameContext.getPlayer().getLocation(), Vector3f.UNIT_Y);
     }
     
     private Vector3f calculateCameraVector() {
@@ -54,52 +53,6 @@ public class GameUpdater {
         double cameraY = _gameContext.getCameraVerticalDistance();
         
         return new Vector3f((float)cameraX, (float)cameraY, (float)cameraZ);
-    }
-    
-    private Quaternion calculateCameraQuaternion(){
-        Vector3f cameraLocation = _gameContext.getCamera().getLocation();
-        Vector3f playerLocation = _gameContext.getPlayer().getLocation();
-        
-        double cameraZ;
-        double cameraX;
-        double cameraY;
-        
-        float deltaX = Math.abs(cameraLocation.getX() - playerLocation.getX());
-        float deltaY = Math.abs(cameraLocation.getY() - playerLocation.getY());
-        float deltaZ = Math.abs(cameraLocation.getZ() - playerLocation.getZ());
-        
-        double theta = Math.atan(deltaX / deltaY);
-        
-        boolean cameraXGreaterThanPlayer = cameraLocation.getX() > playerLocation.getX();
-        boolean cameraYGreaterThanPlayer = cameraLocation.getY() > playerLocation.getY();
-        boolean cameraZGreaterThanPlayer = cameraLocation.getZ() > playerLocation.getZ();
-        
-        if(cameraXGreaterThanPlayer && cameraYGreaterThanPlayer) {
-            cameraZ = Math.PI + theta;
-        }
-        else if(cameraXGreaterThanPlayer && !cameraYGreaterThanPlayer) {
-            
-        }
-        else if(!cameraXGreaterThanPlayer && cameraYGreaterThanPlayer) {
-            
-        }
-        else {
-            // !cameraXGreaterThanPlayer && !cameraYGreaterThanPlayer
-            
-        }
-        
-        
-        return new Quaternion(
-                (float)cameraX, 
-                (float)cameraY, 
-                (float)cameraZ, 
-                _gameContext.getCamera().getRotation().getW());
-    }
-    
-    private float calculateCameraRotation(
-            float ) {
-        
-        
     }
     
     private void processPausedUpdate(float tpf) {
