@@ -46,6 +46,10 @@ public class GameContext implements IGameContext {
         _gameUpdater.processUpdate(tpf);
     }
     
+    public GameUpdater getUpdate() {
+        return _gameUpdater;
+    }
+    
     @Override
     public Camera getCamera() {
         return _camera;

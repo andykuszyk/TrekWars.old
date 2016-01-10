@@ -4,6 +4,7 @@ import TrekWars.Environments.EnvironmentType;
 import TrekWars.Ships.ShipType;
 import com.jme3.app.SimpleApplication;
 import com.jme3.input.KeyInput;
+import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.renderer.RenderManager;
 
@@ -31,8 +32,20 @@ public class Main extends SimpleApplication {
         inputManager.addMapping(InputMappings.decelerate, new KeyTrigger(KeyInput.KEY_DOWN));
         inputManager.addMapping(InputMappings.fire, new KeyTrigger(KeyInput.KEY_SPACE));
         
-        
+        inputManager.addListener(
+                actionListener, 
+                InputMappings.left,
+                InputMappings.right,
+                InputMappings.accelerate,
+                InputMappings.decelerate,
+                InputMappings.fire);
     }
+    
+    private ActionListener actionListener = new ActionListener() {
+        public void onAction(String name, boolean keyPressed, float tpf) {
+            _gameContext.getUpdate().onAction(name, keyPressed, tpf);
+        }
+    };
     
     @Override
     public void simpleUpdate(float tpf) {
