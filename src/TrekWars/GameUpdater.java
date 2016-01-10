@@ -4,6 +4,7 @@
  */
 package TrekWars;
 
+import TrekWars.Bases.Axis;
 import TrekWars.Interfaces.IGameContext;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
@@ -56,7 +57,49 @@ public class GameUpdater {
     }
     
     private Quaternion calculateCameraQuaternion(){
-        return _gameContext.getCamera().getRotation();
+        Vector3f cameraLocation = _gameContext.getCamera().getLocation();
+        Vector3f playerLocation = _gameContext.getPlayer().getLocation();
+        
+        double cameraZ;
+        double cameraX;
+        double cameraY;
+        
+        float deltaX = Math.abs(cameraLocation.getX() - playerLocation.getX());
+        float deltaY = Math.abs(cameraLocation.getY() - playerLocation.getY());
+        float deltaZ = Math.abs(cameraLocation.getZ() - playerLocation.getZ());
+        
+        double theta = Math.atan(deltaX / deltaY);
+        
+        boolean cameraXGreaterThanPlayer = cameraLocation.getX() > playerLocation.getX();
+        boolean cameraYGreaterThanPlayer = cameraLocation.getY() > playerLocation.getY();
+        boolean cameraZGreaterThanPlayer = cameraLocation.getZ() > playerLocation.getZ();
+        
+        if(cameraXGreaterThanPlayer && cameraYGreaterThanPlayer) {
+            cameraZ = Math.PI + theta;
+        }
+        else if(cameraXGreaterThanPlayer && !cameraYGreaterThanPlayer) {
+            
+        }
+        else if(!cameraXGreaterThanPlayer && cameraYGreaterThanPlayer) {
+            
+        }
+        else {
+            // !cameraXGreaterThanPlayer && !cameraYGreaterThanPlayer
+            
+        }
+        
+        
+        return new Quaternion(
+                (float)cameraX, 
+                (float)cameraY, 
+                (float)cameraZ, 
+                _gameContext.getCamera().getRotation().getW());
+    }
+    
+    private float calculateCameraRotation(
+            float ) {
+        
+        
     }
     
     private void processPausedUpdate(float tpf) {
