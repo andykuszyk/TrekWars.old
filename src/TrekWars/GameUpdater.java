@@ -13,7 +13,16 @@ import com.jme3.math.Vector3f;
  */
 public class GameUpdater {
     private IGameContext _gameContext;
-    
+
+    /**
+     * Instantiates a new instance of the game updater class
+     * whose job it is to handle the decisions around which
+     * parts of the app to update on each update cycle, using
+     * the game context to make these decisions.
+     * 
+     * @param gameContext the IGameContext to use when making
+     * update decisions.
+     */
     public GameUpdater(IGameContext gameContext){
         _gameContext = gameContext;
     }
