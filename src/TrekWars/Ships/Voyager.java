@@ -37,5 +37,7 @@ public class Voyager extends ShipBase {
                 initialLocation.getX(), 
                 initialLocation.getY(), 
                 initialLocation.getZ() - _speed);
+        setLocation(voyager.getWorldTranslation());
+        setYRotation(voyager.getLocalRotation().getY());
     }
 }
