@@ -5,7 +5,6 @@
 package TrekWars;
 
 import TrekWars.Interfaces.IGameContext;
-import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 
 /**
@@ -14,7 +13,16 @@ import com.jme3.math.Vector3f;
  */
 public class GameUpdater {
     private IGameContext _gameContext;
-    
+
+    /**
+     * Instantiates a new instance of the game updater class
+     * whose job it is to handle the decisions around which
+     * parts of the app to update on each update cycle, using
+     * the game context to make these decisions.
+     * 
+     * @param gameContext the IGameContext to use when making
+     * update decisions.
+     */
     public GameUpdater(IGameContext gameContext){
         _gameContext = gameContext;
     }
@@ -41,12 +49,33 @@ public class GameUpdater {
         
         _gameContext.getCamera().setLocation(calculateCameraVector());
         _gameContext.getCamera().lookAt(_gameContext.getPlayer().getLocation(), Vector3f.UNIT_Y);
+        
+        
+    }
+    
+    public void onAnalog(String name, float keyPressed, float tpf) {
+        if(InputMappings.left.equals(name)) {
+           _gameContext.getPlayer().turnLeft(tpf);
+        }
+        else if(InputMappings.right.equals(name)) {
+            _gameContext.getPlayer().turnRight(tpf);
+        }
+        else if(InputMappings.accelerate.equals(name)) {
+            _gameContext.getPlayer().increaseSpeed(tpf);
+        }
+        else if(InputMappings.decelerate.equals(name)) {
+            _gameContext.getPlayer().decreaseSpeed(tpf);
+        }
+        else if(InputMappings.fire.equals(name)) {
+            //TODO
+            throw new UnsupportedOperationException();
+        }
     }
     
     private Vector3f calculateCameraVector() {
         float playerYRotation = _gameContext.getPlayer().getYRotation();
         Vector3f playerLocation = _gameContext.getPlayer().getLocation();
-        float distance = -_gameContext.getCameraHorizontalDistance();
+        float distance = _gameContext.getCameraHorizontalDistance();
         
         double cameraZ = playerLocation.getZ() + (distance * Math.cos(playerYRotation));
         double cameraX = playerLocation.getX() + (distance * Math.sin(playerYRotation));

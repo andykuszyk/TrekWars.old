@@ -15,7 +15,8 @@ import com.jme3.math.Vector3f;
 public abstract class ShipBase extends TrekWarsSpatialBase {
     
     private ShipType _shipType;
-    protected float _acceleration = 1;
+    protected float _acceleration = 0.1f;    
+    protected float _angularAcceleration = 1f;
     protected float _speed = 0;
     private float _yRotation = 0;
     private Vector3f _location = new Vector3f(0,0,0);
@@ -42,18 +43,15 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     }
     
     public void turnLeft(float tpf) {
-        setYRotation(appendRotation(_yRotation, - (tpf * _acceleration / Math.PI)));
+        setYRotation(appendRotation(_yRotation, (tpf * _angularAcceleration / Math.PI)));
     }
     
     public void turnRight(float tpf) {
-        setYRotation(appendRotation(_yRotation,(tpf * _acceleration / Math.PI)));
+        setYRotation(appendRotation(_yRotation,-(tpf * _angularAcceleration / Math.PI)));
     }
     
     public float getYRotation() {
-        return getSpatials().get(0).getLocalRotation().getY();
-        
-        //TODO
-        //return _yRotation;
+        return _yRotation;
     }
     
     private float appendRotation(float rotation, double delta) {
@@ -80,20 +78,10 @@ public abstract class ShipBase extends TrekWarsSpatialBase {
     }
     
     public Vector3f getLocation() {
-        return getSpatials().get(0).getLocalTranslation();
-        
-        // TODO
-        //return _location;
+        return _location;
     }
     
     protected void setLocation(Vector3f location) {
-        Vector3f oldLocation = _location;
         _location = location;
-        onLocationChanged(oldLocation, location);
     }
-    
-    protected void onLocationChanged(Vector3f oldLocation, Vector3f newLocation) {
-        
-    }
-            
 }
