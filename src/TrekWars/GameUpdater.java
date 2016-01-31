@@ -53,7 +53,7 @@ public class GameUpdater {
         
     }
     
-    public void onAction(String name, boolean keyPressed, float tpf) {
+    public void onAnalog(String name, float keyPressed, float tpf) {
         if(InputMappings.left.equals(name)) {
            _gameContext.getPlayer().turnLeft(tpf);
         }
@@ -75,7 +75,7 @@ public class GameUpdater {
     private Vector3f calculateCameraVector() {
         float playerYRotation = _gameContext.getPlayer().getYRotation();
         Vector3f playerLocation = _gameContext.getPlayer().getLocation();
-        float distance = -_gameContext.getCameraHorizontalDistance();
+        float distance = _gameContext.getCameraHorizontalDistance();
         
         double cameraZ = playerLocation.getZ() + (distance * Math.cos(playerYRotation));
         double cameraX = playerLocation.getX() + (distance * Math.sin(playerYRotation));
