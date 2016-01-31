@@ -28,7 +28,7 @@ public class GameContext implements IGameContext {
     private EnvironmentType _environmentType;
     private Camera _camera;
     private float _cameraHorizontalDistance = 10;
-    private float _cameraVerticalDistance = 3;
+    private float _cameraVerticalDistance = 5;
     
     public GameContext(AssetManager assetManager,Node rootNode, Camera camera) {
         _rootNode = rootNode;
@@ -46,7 +46,7 @@ public class GameContext implements IGameContext {
         _gameUpdater.processUpdate(tpf);
     }
     
-    public GameUpdater getUpdate() {
+    public GameUpdater getUpdater() {
         return _gameUpdater;
     }
     
