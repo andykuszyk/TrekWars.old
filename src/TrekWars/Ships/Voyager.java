@@ -7,6 +7,7 @@ package TrekWars.Ships;
 import TrekWars.Bases.ShipBase;
 import TrekWars.Interfaces.IGameContext;
 import com.jme3.material.Material;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 
@@ -31,13 +32,20 @@ public class Voyager extends ShipBase {
     public void update(float tpf) {
         Spatial voyager = getSpatials().get(0);
         Vector3f initialLocation = voyager.getLocalTranslation();
-        System.out.println(initialLocation.getZ());
-        // Move player
+        //System.out.println(initialLocation.getZ());
+        
+        // Move player spatials
+        double newX = initialLocation.getX() + (-_speed * Math.sin(getYRotation()));
+        double newZ = initialLocation.getZ() + (-_speed * Math.cos(getYRotation()));
         voyager.setLocalTranslation(
-                initialLocation.getX(), 
+                (float)newX, 
                 initialLocation.getY(), 
-                initialLocation.getZ() - _speed);
+                (float)newZ);
         setLocation(voyager.getWorldTranslation());
-        setYRotation(voyager.getLocalRotation().getY());
+        
+        // Rotate player spatials
+        System.out.println(getYRotation());
+        voyager.setLocalRotation(new Quaternion().fromAngleAxis(getYRotation(), new Vector3f(0,1,0)));
+                
     }
 }
