@@ -6,6 +6,7 @@ package TrekWars.Ships;
 
 import TrekWars.Bases.ShipBase;
 import TrekWars.Interfaces.IGameContext;
+import com.jme3.bounding.BoundingVolume;
 import com.jme3.material.Material;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
@@ -25,6 +26,8 @@ public class Voyager extends ShipBase {
         voyager.setMaterial(mat_default);
         voyager.setLocalTranslation(0, 0, -10);
         voyager.setLocalScale(1);
+        BoundingVolume volume = voyager.getWorldBound();
+        while(voyager.getWorldBound())
         _spatials.add(voyager);
     }
     
