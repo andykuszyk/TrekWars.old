@@ -21,16 +21,18 @@ public class SimpleStarField extends EnvironmentBase {
     public SimpleStarField(IGameContext gameContext) {
         super(EnvironmentType.SimpleStarField, gameContext);
         
-        Sphere sphere = new Sphere(100, 100, 100);
-        sphere.scaleTextureCoordinates(new Vector2f(10,10));
-        Geometry starSphere = new Geometry("StarSphere", sphere);
-        starSphere.scale(-1);
-        Material mat = new Material(_gameContext.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        Texture starTexture = _gameContext.getAssetManager().loadTexture("Textures/starscape.jpg");
-        starTexture.setWrap(Texture.WrapMode.Repeat);
-        mat.setTexture("ColorMap", starTexture);
-        starSphere.setMaterial(mat);
         
-        _spatials.add(starSphere);
+        
+//        Sphere sphere = new Sphere(100, 100, 100);
+//        sphere.scaleTextureCoordinates(new Vector2f(10,10));
+//        Geometry starSphere = new Geometry("StarSphere", sphere);
+//        starSphere.scale(-1);
+//        Material mat = new Material(_gameContext.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//        Texture starTexture = _gameContext.getAssetManager().loadTexture("Textures/starscape.jpg");
+//        starTexture.setWrap(Texture.WrapMode.Repeat);
+//        mat.setTexture("ColorMap", starTexture);
+//        starSphere.setMaterial(mat);
+//        
+//        _spatials.add(starSphere);
     }
 }

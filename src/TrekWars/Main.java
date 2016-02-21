@@ -22,6 +22,7 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         flyCam.setEnabled(false);
+        cam.setFrustumFar(10000);
         _gameContext = new GameContext(assetManager,rootNode, cam);
         _gameContext.setEnvironmentType(EnvironmentType.SimpleStarField);
         _gameContext.setPlayerType(ShipType.Voyager);

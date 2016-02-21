@@ -27,8 +27,8 @@ public class GameContext implements IGameContext {
     private ShipType _playerType;    
     private EnvironmentType _environmentType;
     private Camera _camera;
-    private float _cameraHorizontalDistance = 10;
-    private float _cameraVerticalDistance = 5;
+    private float _cameraHorizontalDistance = 120;
+    private float _cameraVerticalDistance = 40;
     
     public GameContext(AssetManager assetManager,Node rootNode, Camera camera) {
         _rootNode = rootNode;
