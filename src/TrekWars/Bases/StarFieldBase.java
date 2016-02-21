@@ -8,7 +8,6 @@ import TrekWars.Interfaces.IGameContext;
 import com.jme3.material.Material;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
-import com.jme3.scene.shape.Box;
 import com.jme3.scene.shape.Quad;
 
 /**
@@ -17,7 +16,7 @@ import com.jme3.scene.shape.Quad;
  */
 public class StarFieldBase extends TrekWarsSpatialBase  {
     
-    private final int _starCount = 10000;
+    private final int _starCount = 1000;
     private final float _starSize = 50;
     private final int _maxStarDistance = 10000;
     private final int _minStarDistance = 1000;
